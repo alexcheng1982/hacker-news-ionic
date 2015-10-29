@@ -1,0 +1,18 @@
+<ion-view view-title="{{ vm.story.title }}">
+  <ion-content>
+    <div class="padding">
+      <h2>{{ vm.story.title }}</h2>
+      <div>
+        <span>{{ vm.story.score }}</span>
+        <span>{{ vm.story.by }}</span>
+        <span>{{ vm.story.time * 1000 | timeAgo }}</span>
+      </div>
+      <div>
+        <a ng-href="{{ vm.story.url }}">{{ vm.story.url }}</a>
+      </div>
+    </div>
+    <div>
+      <iframe class="web-page" ng-src="{{ vm.storyUrl }}" frameborder="0"></iframe>
+    </div>
+  </ion-content>
+</ion-view>

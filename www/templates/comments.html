@@ -1,0 +1,28 @@
+<ion-view view-title="Comments">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Release to refresh..."
+      on-refresh="vm.storeSupport.refresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item ng-repeat="comment in vm.comments" class="item-button-right">
+        <div class="comment">
+          <p ng-bind-html="comment.text"></p>
+          <div>
+            <span><i class="ion ion-person padding-right"></i>{{ comment.by }}</span>
+            <span class="comment__time">
+              <i class="ion ion-ios-clock-outline padding-right"></i>
+              {{ comment.time * 1000 | timeAgo }}
+            </span>
+          </div>
+        </div>
+        <a class="button button-icon icon icon-left ion-ios-chatbubble-outline" ng-if="comment.kids" ui-sref="app.comments({itemId: comment.id})">{{ comment.kids.length }}</a>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll
+      ng-if="vm.storeSupport.hasMoreItemsToLoad()"
+      on-infinite="vm.storeSupport.loadMoreItems()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

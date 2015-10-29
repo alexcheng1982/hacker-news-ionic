@@ -1,0 +1,9 @@
+.comment {
+  p {
+    white-space: pre-line !important;
+  }
+
+  &__time {
+    padding-left: 1rem;
+  }
+}

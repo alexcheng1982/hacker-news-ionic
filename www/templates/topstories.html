@@ -1,0 +1,54 @@
+<ion-view>
+  <ion-content>
+    <ion-refresher
+      pulling-text="Release to refresh..."
+      on-refresh="vm.storeSupport.refresh()">
+    </ion-refresher>
+    <div class="list card story" ng-repeat="story in vm.stories">
+      <div class="item item-text-wrap">
+        <h2 ng-click="viewLink(story.url)">
+          {{ story.title }}
+        </h2>
+        <div>
+          <span>
+            <i class="ion ion-person"></i>
+            {{ story.by }}
+          </span>
+          <span class="story__time">
+            <i class="ion ion-ios-clock-outline"></i>
+            {{ story.time * 1000 | timeAgo }}
+          </span>
+        </div>
+        <p>
+          <i class="ion ion-link"></i>
+          <span>
+            {{ story.url }}
+          </span>
+        </p>
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" ng-if="story.kids" ui-sref="app.comments({itemId: story.id})">
+          <i class="icon ion-chatbubbles"></i>
+          {{ story.descendants }}
+        </a>
+        <a class="tab-item" ng-if="userProfile && !vm.isFavored(story)" href ng-click="vm.addToFavorite(story)">
+          <i class="icon ion-heart"></i>
+          Favorite
+        </a>
+        <a class="tab-item" ng-if="userProfile && vm.isFavored(story)" href ng-click="vm.removeFromFavorite(story)">
+          <i class="icon ion-heart assertive"></i>
+          Favored
+        </a>
+        <a class="tab-item" href ng-click="shareStory(story)">
+          <i class="icon ion-share"></i>
+          Share
+        </a>
+      </div>
+    </div>
+    <ion-infinite-scroll
+      ng-if="vm.storeSupport.hasMoreItemsToLoad()"
+      on-infinite="vm.storeSupport.loadMoreItems()"
+      distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>
