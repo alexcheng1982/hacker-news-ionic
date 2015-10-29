@@ -13,4 +13,4 @@ This app can view top stories in Hacker News, view comments of a story, add stor
 
 This app is the sample app of book [Build Mobile Apps with Ionic and Firebase](https://leanpub.com/build-mobile-apps-with-ionic-and-firebase).
 
-<iframe width="240" height="400" src="https://leanpub.com/build-mobile-apps-with-ionic-and-firebase/embed" frameborder="0" allowtransparency="true"></iframe>
+[![Buy this book](https://s3.amazonaws.com/titlepages.leanpub.com/build-mobile-apps-with-ionic-and-firebase/large)](https://leanpub.com/build-mobile-apps-with-ionic-and-firebase)
