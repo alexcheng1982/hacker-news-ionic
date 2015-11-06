@@ -149,7 +149,7 @@ angular.module('hackernews', ['ionic', 'hackernews.controllers'])
               start = (page - 1) * storiesPerPage,
               end = page * storiesPerPage,
               favorites = _.keys(stories);
-            favorites.reverse(); 
+            favorites.reverse();
             var ids = favorites.slice(start, end);
             resolve(ItemStore.fetchItems(ids));
           });
@@ -195,8 +195,11 @@ angular.module('hackernews', ['ionic', 'hackernews.controllers'])
             _.set(ctrlRef, itemsProperty, existingItems.concat(items));
             loadedItemsCount = items.length;
             currentPage++;
-            $scope.$broadcast('scroll.infiniteScrollComplete');
             return items;
+          }, function() {
+            loadedItemsCount = -1;
+          })['finally'](function() {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
           });
         };
       };
