@@ -19,12 +19,6 @@
             {{ story.time * 1000 | timeAgo }}
           </span>
         </div>
-        <p>
-          <i class="ion ion-link"></i>
-          <span>
-            {{ story.url }}
-          </span>
-        </p>
       </div>
       <div class="item tabs tabs-secondary tabs-icon-left">
         <a class="tab-item" ng-if="story.kids" ui-sref="app.comments({itemId: story.id})">

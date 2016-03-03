@@ -11,6 +11,9 @@ angular.module('hackernews', ['ionic', 'hackernews.controllers'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    if (window.codePush) {
+      window.codePush.sync();
+    }
   });
 })
 .config(function($stateProvider, $urlRouterProvider) {
